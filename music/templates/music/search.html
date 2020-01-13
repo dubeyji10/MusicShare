@@ -1,0 +1,23 @@
+
+{% extends "music/base.html" %}
+{% block content %}
+{% if results %}
+
+    <h3 class="article"> Following Albums found related to your query </h3>
+    <br>
+    
+{% endif %}
+    __________________________________________
+    <br>
+    {% for result in all_search_results %}
+    <ul>   
+        <li><a href="{% url 'album-detail' result.id %}"> {{ result.title }} </a><br> posted by <a class="mr-2" href="{% url 'user-albums' result.author.username %}"> <font color = "#6bfa75">{{ result.author }} </a></font>on {{ result.date_posted }}</li>
+    </ul>
+    {% empty %}
+    <h1>
+        No Result
+    </h1>
+    {% endfor %}
+
+__________________________________________
+{% endblock %}

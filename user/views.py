@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages # for alerts
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
+from django.contrib.auth import get_user_model
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)

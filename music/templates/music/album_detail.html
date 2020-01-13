@@ -1,0 +1,63 @@
+{% extends "music/base.html" %}
+{% block content %}
+    <article class="media content-section">
+    
+      <img class = "rounded-circle article-img" src = "{{ album.author.profile.image.url }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                 <a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a>
+                 <small class="text-muted">{{ object.date_posted |date:"F d, Y"}}</small>
+            {% if object.author == user %}
+               <div>
+                   <a class = "btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'album-update' object.id %}"> Update</a>
+                   <a class = "btn btn-danger btn-sm mt-1 mb-1" href="{% url 'album-delete' object.id %}"> Delete</a>
+                </div>
+            {% endif %} 
+            </div>
+        
+              <h2 class="article-title" href="#">{{ object.title }}</h2>
+              <img class = "img-fluid" src = "{{ album.image_url|default_if_none:'' }}">
+              <br>__________________________________________________________________
+              <p class="content"><br>{{ object.genre|linebreaks }}</p>
+
+    <hr> {% if object.author == user %}
+                <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}">Add Songs</a>         
+         {% endif %}
+
+
+        {% for song in album.songs.all %}
+            <div>
+                <div> Title : {{ song.song_title }}<div>
+                             {% if object.author == user %}
+                           <a class="btn btn-default" href="{% url 'song_remove'  pk=album.pk  %}"> Remove <span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+                <div class="date"><font color = "#cc1110">On {{ song.created_date }}</font>
+                    <br>
+                                    <div>
+                                    <a target="_blank" href="{{ song.audio_file.url }}">
+                                <button type="button" class="btn btn-success btn-xs">
+                        <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                                </button>
+                                            </a>
+
+                                                <audio controls>
+                             <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                            </audio>
+                                     </div>
+
+                    
+                </div>
+            </div> 
+        
+            
+
+                {% empty %}
+                    <p>No songs added here yet :(</p>
+                    {{ song.author }}
+        {% endfor %}
+
+        </article>
+
+{% endblock content %}
+
+

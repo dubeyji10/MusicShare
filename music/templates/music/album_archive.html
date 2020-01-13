@@ -1,0 +1,14 @@
+{% extends "music/base.html" %}
+{% block content %}
+<h1>   Archives</h1>
+<ul>
+
+        {% for article in latest %}
+            <li><font color = "#010102">
+                <a href="{% url 'album-detail' article.id %}"> {{ article.title }} </a>by <font color = "#6bfa75">  <a class="mr-2" href="{% url 'user-albums' article.author.username %}">{{ article.author }}</a></font> on {{ article.date_posted }}
+                </font>
+            </li>
+        {% endfor %}
+
+</ul>
+{% endblock %}

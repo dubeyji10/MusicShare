@@ -11,43 +11,80 @@
 
     <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type ="text/css" href = "{% static 'music/main.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/style.css' %}">
+
     {% if title %}
-        <title> Music Share  {{ title }}</title> 
+        <title> MusicShare - {{ title }} </title> 
     {% else %}
-        <title> Music Sharing Website </title> 
+        <title> MUSIC SHARE </title> 
     {% endif %}    
 </head>
-<body style="background-color:#fff">
+<body style="background-color:#1a1a1a">#1a1a1a 
 
-        <header class="site-header">
-                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-                  <div class="container">
-                    <a class="navbar-brand mr-4" href="#">HOME</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarToggle">
-                      <div class="navbar-nav mr-auto">     
-                        <a class="nav-item nav-link" href="#"><img width = "27" height = "28" src = "#"> About</a>  
-                    </div>
+<div class="header">
+  <div class="sides">
+    <a href="{% url 'music-home' %}" class = "logo" >- Home -</a>
+    {% if user.is_authenticated %}
+      <a class="logo" href="{% url 'album-create' %}">- New Album- </a>
+      <a class="logo" href="{% url 'profile' %}">- Profile -</a>
+      <a class="logo" href="{% url 'logout' %}">- Logout -</a>
+    {% else %}
+      <a class="logo" href="{% url 'login' %}">- Login -</a>
+      <a class="logo" href="{% url 'register' %}">- Register -</a>
+    {% endif %}
+  </div>
+  <div class="sides"> <a href="#" class="menu">-</a></div>
+  <div class="info">
+  <h4><a href="#category">Feel The Beats</a></h4>
+    <h1>Music Share</h1>
+    <div class="meta">
+      <a  href="https://twitter.com/nodws" target="_b" class="author"></a><br>
+      Courtesy of :  <a href="https://twitter.com/nodws" target="_b">James Nodws</a> on May 30, 2017
+    </div>
+    </div>
+</div>
 
+ <br>
+ <br>
 
-                      <!-- Navbar Right Side -->
-                      <div class="navbar-nav">
-                      {% if user.is_authenticated %}
-                      <a class="nav-item nav-link" href="#">Profile</a>
-                      <a class="nav-item nav-link" href="#">Logout</a>
-                      {% else %}
-                        <a class="nav-item nav-link" href="#"> <img width = "30" height = "30" src = "{% static 'music/login.png' %}"></a>
-                        <a class="nav-item nav-link" href="#"> <img width = "20" height = "20" src = "{% static 'music/register.png' %}"></a>
-                      {% endif %}
+            <main role="main" class="container">
+                    <div class="row">
+                      <div class="col-md-8">
+                          {% if messages %}
+                            {% for message in messages %}
+                              <div class = "alert alert-{{ message.tags }}"> 
+                                  {{ message }}
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                          {% block content %}{% endblock %}
                       </div>
-                    </div>
-                  </div>
-                </nav>                
 
-        </header>
+                      <div>
+                          <div class="content-section">
+                            <h3><font color='04040f'>Additional Links</font></h3>
+                            <p class='text-muted small'>links to browse through this website </p>
+                              <ul>
+                                <li class=""><a class="nav-item nav-link" href="{% url 'latest-albums' %}">Latest Albums</a></li>
+                                <li class=""><a class="nav-item nav-link" href="{% url 'music-announcemnet' %}">Announcements</a></li>
+                                <li class=""><a class="nav-item nav-link" href="{% url 'archives' %}">Archives</a></li>
+                                <li class=""><a class="nav-item nav-link" href="{% url 'allusers' %}">Accounts</a></li>
+                              </ul>
+                            </p>  
+                          </div>
+                          <p>
+                            <div>
+                              <form method="GET" action="{% url 'search' %}">
+                              <center> <input style="border-radius: 15px;background-color: #09966 ;width : 100;border: 2.3px solid black;" id="searchbox" class = "form-control" name="q" type="text" placeholder="Search Albums"/><input type="image" src="{% static 'music/search.png' %}" alt="Submit" width="48" height="48"/></center>
+                              </form>
+                            </div>
+                          </p>
+                      </div>
+                
+                      
+                   </div>
+
+            </main>
 
 
     <!-- Optional JavaScript -->
@@ -55,7 +92,15 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-</body>
+   <script src="{% static 'music/js/jquery.min.js' %}"></script>
+    <!-- Popper -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'music/js/bootstrap.min.js' %}"></script>
+    <!-- All Plugins -->
+    <script src="{% static 'music/js/razo.bundle.js' %}"></script>
+    <!-- Active -->
+    <script src="{% static 'music/js/default-assets/active.js' %}"></script>
 
+</body>
 </html>

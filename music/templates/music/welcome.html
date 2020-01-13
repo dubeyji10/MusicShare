@@ -13,23 +13,18 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type ="text/css" href = "{% static 'music/welcome.css' %}">
     {% if title %}
-        <title> MusicShare- {{ title }} </title> 
+        <title> MusicShare - {{ title }} </title> 
     {% else %}
         <title> MUSIC SHARE </title> 
     {% endif %}    
 </head>
-<body style="background-image: url({% static 'blog/bg.png' %}); background-size:100%;">
+<body style="background-image: url({% static 'music/bg.png' %}); background-size:100%;">
         <article class="container">
 
                     <blockquote>
                         <strong>Welcome</strong>
-                        <em><br><font color = "#010101"><center> A website</center>
-                            <center> to share music </center> 
-                            <center>  like soundclound. </center></font></em><em><center>Visit <a href="#">MusicShare</a></center></em>
+                       <br>Visit <a href="{% url 'music-home' %}">MusicShare</a></center></em>
                     </blockquote>
-
-        <b>by Abhishek Dubey</b>     
-       
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

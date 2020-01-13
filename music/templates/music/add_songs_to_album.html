@@ -1,0 +1,19 @@
+<html>
+
+{% extends "music/base.html" %}
+{% load crispy_forms_tags %}
+</form>
+
+{% block content %}
+    <h1><font color ="#001000">New Songs</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy}}
+    </font><button type="submit" class="save btn btn-default">Add</button>
+    </form>
+    
+{% endblock %}
+
+
+
+</html>
