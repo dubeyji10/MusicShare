@@ -2,7 +2,7 @@
 {% block content %}
     {% for album in albums %}
     <article class="media content-section">
-     <img class = "rounded-circle article-img" src = "{{ album.author.profile.image.url }}">
+     <div class = "round"> <img class = "profile-pic" src = "{{ album.author.profile.image.url }}"> </div>
             <div class="media-body">
               <div class="article-metadata">
                 <a class="mr-2" href="{% url 'user-albums' album.author.username %}">{{ album.author }}</a>
@@ -18,7 +18,7 @@
                   <p>{{ album.genre|safe|truncatewords:"30"|linebreaks }}</p> 
                   <a href="{% url 'album-detail' pk=album.pk %}">   See Songs </a>
               </div>
-            Total Songs: {{ album.songs.count }}</a>
+            <h2> Total Songs: {{ album.songs.count }}</h2></a>
 
             </div>
     </article>
@@ -49,3 +49,16 @@
 {% endblock content %}
 
 
+  <style>
+        .round {
+            display:block;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+            padding:5px 4px;
+        }
+        .round img {
+            width: 45px;
+        }
+  </style>

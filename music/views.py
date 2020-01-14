@@ -56,6 +56,13 @@ class AlbumListView(ListView):
 class AlbumDetailView(DetailView):
     model = Album
 
+#delete this view .... 
+class AlbumDetailView2(DetailView):
+    model = Album
+
+def detail2(request):
+    return redirect('album-detail2', pk=song.album.pk)
+
 #adding month view
 # class PostMonthArchiveView(MonthArchiveView):
 #     queryset = Post.objects.all()
@@ -189,12 +196,26 @@ def add_songs_to_album(request, pk):
 #     }
 #     return render(request, 'music/add_songs_to_album.html', context)
 
+# @login_required
+# def song_remove(request, pk):
+#     song = get_object_or_404(Songs, pk=pk)
+#     song.delete()
+#     return redirect('album-detail', pk=song.album.pk)
+
 @login_required
-def song_remove(request, pk):
+def song_delete(request, pk):
     song = get_object_or_404(Songs, pk=pk)
     song.delete()
     return redirect('album-detail', pk=song.album.pk)
 
+class SongRemoveView(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+    model = Songs
+    success_url = 'album-detail'
+    def test_func(self):
+        song = self.get_object()
+        if self.request.user == song.author:
+            return True
+        return False #403 -forbidden 
 
 def latest_albums(request):
     latest_Album = Album.objects.all()

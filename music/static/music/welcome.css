@@ -31,13 +31,13 @@ body {
 }
 */
   a:link {
-    color: red;
+    color: rgb(246, 246, 246);
 
   }
   
   /* visited link */
   a:visited {
-    color: green;
+    color: rgb(230, 253, 230);
   }
   
   /* mouse over link */
@@ -47,7 +47,7 @@ body {
     color: blue;
     }
   a:hover{
-    color:rgb(214, 45, 45);
+    color:rgb(248, 241, 241);
     /* text-transform: lowercase;*/
     }
     .container {
@@ -67,7 +67,7 @@ body {
         border-bottom: 2px dotted #ce2c2c;
         -webkit-transform: rotate(-3deg);
         -moz-transform: rotate(-3deg);
-        color: #010101;
+        color: #fff;
     }
 
     .container:before {
@@ -100,13 +100,13 @@ body {
             margin-right: -18px;
             position: relative;
             z-index: 1;
-            color: #020303;
+            color: #fff;
         }
 
         blockquote strong:first-child {
             margin-left: 8px;
             letter-spacing: 0;
-            color: #020303;
+            color: #fff;
         }
 
        /*blockquote strong:last-child {

@@ -1,0 +1,91 @@
+{% extends 'music/base2.html' %}
+{% block content %}
+
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'music/js/main.js' %}"></script>
+
+<div class="container-fluid songs-container">
+    <div class="row">
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'music:detail' album.id %}">
+                        {% if album.album_logo %}
+                            <img src="{{ album.album_logo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1>{{ album.artist }}</h1>
+                    <p class="album-title">{{ album.album_title }}</p>
+                    <h6 class="genre">{{ album.genre }}</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation"><a href="{% url 'add_songs_to_album' pk=album.pk  %}">Add New Song</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All Songs</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Audio File</th>
+                            <th>Favorite</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+             {% for song in album.songs.all %}
+                            <tr>
+                                <td>{{ song.song_title }}</td>
+                                <td>
+                                <audio
+                                    controls
+                                        src="{{ song.audio_file.url }}">
+                                            Your browser does not support the
+                                            <code>audio</code> element.
+                                    </audio>
+
+                                    </a>
+                                </td>
+                                <td>
+                                    Favorite OPTION -- add url -==-
+                                </td>
+                                <td>
+                                    Add delete Button
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

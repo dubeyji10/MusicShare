@@ -131,3 +131,179 @@ html,body{
 .twtr{
   margin-top:100px
 }
+
+
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+*, *:before, *:after { box-sizing: border-box; }
+
+label .menu3 {
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  z-index: 100;
+  width: 200px;
+  height: 200px;
+  background: rgb(246, 246, 246);
+  border-radius: 50% 50% 50% 50%;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  box-shadow: 0 0 0 0 rgb(243, 222, 222), 0 0 0 0 rgb(200, 212, 25);
+  cursor: pointer;
+}
+
+label .hamburger {
+  position: absolute;
+  top: 135px;
+  left: 50px;
+  width: 30px;
+  height: 2px;
+  background: #000;
+  display: block;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+label .hamburger:after, label .hamburger:before {
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+label .hamburger:before { top: -10px; }  /*  { top: -10px; } */
+
+label .hamburger:after { bottom: -10px; }
+
+label input { display: none; }
+
+label input:checked + .menu3 {
+  box-shadow: 0 0 0 100vw rgb(84, 238, 130), 0 0 0 100vh rgb(31, 134, 71);
+  border-radius: 0;
+}
+
+label input:checked + .menu3 .hamburger {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+label input:checked + .menu3 .hamburger:after {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  bottom: 0;
+}
+
+label input:checked + .menu3 .hamburger:before {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  top: 0;
+}
+
+label input:checked + .menu3 + ul { opacity: 1; }
+
+label ul {
+  z-index: 200;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: .25s 0s ease-in-out;
+  transition: .25s 0s ease-in-out;
+}
+
+label a {
+  margin-bottom: 1em;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  text-color: #000;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+}
+
+/*
+body, html {
+  background-repeat: no-repeat;
+  background: url('images/background.jpg');
+}
+.navbar{
+border-radius:0;
+}
+
+.navbar-brand{
+font-family: 'Satisfy', cursive;
+}
+
+.nav-pills>li>a {
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+*/
+
+.card-container.card {
+  max-width: 400px;
+  padding: 40px 40px;
+  overflow: hidden;
+  border-color: rgb(34, 233, 133);
+  background-color: rgb(192, 77, 77);
+
+  
+}
+
+.profile-name-card {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 0;
+  min-height: 1em;
+  border-color: rgb(34, 233, 133);
+  background-color: rgb(192, 77, 77);
+
+}
+
+.card {
+  background-color: rgb(192, 77, 77);
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  border-color: rgb(34, 233, 133);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(54, 209, 145, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border-color: rgb(34, 233, 133);
+
+}
+
+@media only screen and (min-width: 1023px){
+.thumbnail:hover{transform: scale(1.10);transition: .2s;}
+.thumbnail{transition:.2s;margin-top:20px;}
+}

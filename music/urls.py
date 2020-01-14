@@ -17,7 +17,7 @@
 
 
 from django.urls import path
-from .views import AlbumListView,AlbumDetailView,AlbumCreateView,AlbumUpdateView,AlbumDeleteView,UserAlbumListView,SearchView
+from .views import AlbumListView,AlbumDetailView,AlbumCreateView,AlbumUpdateView,AlbumDeleteView,UserAlbumListView,SearchView,AlbumDetailView2
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -34,14 +34,16 @@ urlpatterns = [
     path('about/',views.about,name='music-about'),#.../about
              #call about function
     path('announcemnet/',views.announcement,name='music-announcemnet'),#another simple page
-    path('album/<int:pk>/',AlbumDetailView.as_view(),name = 'album-detail'),
+    path('album/<int:pk>/',AlbumDetailView.as_view(),name = 'album-detail'), #uncomment this line
+    #path('album/<int:pk>/',views.detail2,name = 'album-detail2'),
+
             #pk - primary key int-integer type
     path('album/new/',AlbumCreateView.as_view(),name = 'album-create'),
     path('album/<int:pk>/update',AlbumUpdateView.as_view(),name = 'album-update'),
     #path('album/<int:pk>/delete/',AlbumDeleteView.as_view(),name = 'album-delete'),
     path('album/<int:pk>/delete/',views.delete_album,name = 'album-delete'),
     path('album/<int:pk>/song/', views.add_songs_to_album, name='add_songs_to_album'),
-    path('song/<int:pk>/remove/', views.song_remove, name='song_remove'),
+    path('song/<int:pk>/remove/', views.song_delete, name='song_delete'),
     #path('search/',views.searchposts,name="post_search"),  
     #add path for /accounts  
     path('user/<str:username>',UserAlbumListView.as_view(),name='user-albums'),

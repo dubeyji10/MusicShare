@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" type ="text/css" href = "{% static 'music/style.css' %}">
+    <link rel="stylesheet" type ="text/css" href = "{% static 'music/followme.css' %}">
+
+    {% if title %}
+        <title> {{ title }} </title> 
+    {% else %}
+        <title> MUSIC SHARE </title> 
+    {% endif %}  
+
+</head>
+<body style="background-color:#fff"> 
+
+<div class="header">
+  <div class="sides">
+    <a href="{% url 'music-home' %}" class = "logo" >- Home -</a>
+    {% if user.is_authenticated %}
+      <a class="logo" href="{% url 'album-create' %}">- New Album- </a>
+      <a class="logo" href="{% url 'profile' %}">- Profile -</a>
+      <a class="logo" href="{% url 'logout' %}">- Logout -</a>
+    {% else %}
+      <a class="logo" href="{% url 'login' %}">- Login -</a>
+      <a class="logo" href="{% url 'register' %}">- Register -</a>
+    {% endif %}
+  </div>
+  <div>
+    <form method="GET" action="{% url 'search' %}">
+   <input style="border-radius: 15px;background-color: #09966 ;width : 300px;border: 2.3px solid black;" id="searchbox" class = "form-control" name="q" type="text" placeholder="Search Albums"/><input type="image" src="{% static 'music/search.png' %}" alt="Submit" width="48" height="48"/>
+    </form>
+  </div>
+  <div class="info">
+  <h4><a href="#category">Feel The Beats</a></h4>
+    <h1>Music Share</h1>
+    <div class="meta">
+      <a  href="https://twitter.com/nodws" target="_b" class="author"></a><br>
+      Courtesy of :  <a href="https://twitter.com/nodws" target="_b">James Nodws</a> on May 30, 2017
+    
+    </div>
+    <div class="menu2">
+  <div class="label2">Follow Me</div>
+  <div class="spacer2"></div>
+  <div class="item"><span2>Twitter</span2></div>
+  <div class="item"><span2>Instagram</span2></div>
+  <div class="item"><span2>Flickr</span2></div>
+  <div class="item"><span2>Behance</span2></div>
+  <div class="item"><span2>MixCloud</span2></div>
+</div>
+
+    </div>
+    
+</div>
+
+ <br>
+ <br>
+
+            <main role="main" class="container">
+                    <div class="row">
+                      <div class="col-md-8">
+                          {% if messages %}
+                            {% for message in messages %}
+                              <div class = "alert alert-{{ message.tags }}"> 
+                                  {{ message }}
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                          {% block content %}{% endblock %}
+                      </div>
+                <label>
+                  <input type='checkbox'>
+                    <span class='menu3'> <span class='hamburger'></span> </span>
+                    <ul>
+                        <li class=""><a class="nav-item nav-link" href="{% url 'latest-albums' %}">Latest Albums</a></li>
+                        <li class=""><a class="nav-item nav-link" href="{% url 'music-announcemnet' %}">Announcements</a></li>
+                        <li class=""><a class="nav-item nav-link" href="{% url 'archives' %}">Archives</a></li>
+                        <li class=""><a class="nav-item nav-link" href="{% url 'allusers' %}">Accounts</a></li>
+                    </ul>
+                </label>
+        </main>
+
+
+
+</body>
+</html>
