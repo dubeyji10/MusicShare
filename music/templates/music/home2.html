@@ -1,29 +1,25 @@
 {% extends "music/base.html" %}
 {% block content %}
     {% for album in albums %}
-
-    <figure class="snip1585">
-        
-          <img src="{{ album.image_url }}"> 
-       <figcaption>
-    <h3><span> Far Caspian</span></h3>
-  </figcaption>
-        <a href="{% url 'album-detail' pk=album.pk %}"></a>
-        
-    </figure>
+    <article class="media content-section">
+     <div class card> <div class = "profile-image-card"> <img class = "profile-pic" src = "{{ album.author.profile.image.url }}"> </div></div>
             <div class="media-body">
-              <div class="content-section">
+              <div class="article-metadata">
                 <a class="mr-2" href="{% url 'user-albums' album.author.username %}">{{ album.author }}</a>
                 <small class="text-muted">{{ album.date_posted |date:"F d, Y"}}</small>
               </div>
               <h2><a class="article-title" href="{% url 'album-detail' album.id %}">{{ album.title }}</a></h2>
               <div class = "polaroid">  
+                {% if album.image_url %}
+                  <img width="240" height="410" class="img-thumbnail" src="{{ album.image_url }}"/>
+                {% endif %}
               </div class='article'> 
               <div>
-                  <font color = "#fff"> Genre : {{ album.genre }}</font> 
-                  <br>
-                  <a href="{% url 'album-detail' pk=album.pk %}">   Total Tracks : {{ album.songs.count }} </a>
+                  <p>{{ album.genre|safe|truncatewords:"30"|linebreaks }}</p> 
+                  <a href="{% url 'album-detail' pk=album.pk %}">   See Songs </a>
               </div>
+            <h2> Total Songs: {{ album.songs.count }}</h2></a>
+
             </div>
     </article>
     {% endfor %}
@@ -52,3 +48,17 @@
 
 {% endblock content %}
 
+
+  <style>
+        .round {
+            display:block;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+            padding:5px 4px;
+        }
+        .round img {
+            width: 45px;
+        }
+  </style>

@@ -8,10 +8,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+   <script src="{% static 'music/js/images_responsive.js' %}"></script>
+   <script src="{% static 'music/js/searchbar.js' %}"></script>
 
     <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type ="text/css" href = "{% static 'music/style.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/searchbar.css' %}">
 
     {% if title %}
         <title> {{ title }} </title> 
@@ -34,6 +37,7 @@
     {% endif %}
   </div>
   <div class="sides"> <a href="#" class="menu">-</a></div>
+
   <div class="info">
   <h4><a href="#category">Feel The Beats</a></h4>
     <h1>Music Share</h1>
@@ -42,6 +46,25 @@
       Courtesy of :  <a href="https://twitter.com/nodws" target="_b">James Nodws</a> on May 30, 2017
     </div>
     </div>
+    <label>
+                  <input type='checkbox'>
+                    <span class='menu3'> <span class='hamburger'></span> </span>
+                    <ul style="list-style-type:none;">
+                        <li class=""><a class="" href="{% url 'latest-albums' %}"><font color = "#000">Latest Albums</font></a></li>
+                        <li class=""><a class="" href="{% url 'music-announcemnet' %}"><font color = "#000">Announcements</font></a></li>
+                        <li class=""><a class="" href="{% url 'archives' %}"><font color = "#000">Archives</font></a></li>
+                        <li class=""><a class="" href="{% url 'allusers' %}"><font color = "#000">Accounts</font></a></li>
+                    </ul>
+    </label>
+<div class="menu2">
+  <div class="label2">Follow Me</div>
+  <div class="spacer2"></div>
+  <div class="item"><span2>Twitter</span2></div>
+  <div class="item"><span2>Instagram</span2></div>
+  <div class="item"><span2>Flickr</span2></div>
+  <div class="item"><span2>Behance</span2></div>
+  <div class="item"><span2>MixCloud</span2></div>
+</div>
 </div>
 
  <br>
@@ -58,32 +81,11 @@
                             {% endfor %}
                           {% endif %}
                           {% block content %}{% endblock %}
-                      </div>
+                    </div>
 
-                      <div>
-                          <div class="content-section">
-                            <h3><font color='04040f'>Additional Links</font></h3>
-                            <p class='text-muted small'>links to browse through this website </p>
-                              <ul>
-                                <li class=""><a class="nav-item nav-link" href="{% url 'latest-albums' %}">Latest Albums</a></li>
-                                <li class=""><a class="nav-item nav-link" href="{% url 'music-announcemnet' %}">Announcements</a></li>
-                                <li class=""><a class="nav-item nav-link" href="{% url 'archives' %}">Archives</a></li>
-                                <li class=""><a class="nav-item nav-link" href="{% url 'allusers' %}">Accounts</a></li>
-                              </ul>
-                            </p>  
-                          </div>
-                          <p>
-                            <div>
-                              <form method="GET" action="{% url 'search' %}">
-                              <center> <input style="border-radius: 15px;background-color: #09966 ;width : 100;border: 2.3px solid black;" id="searchbox" class = "form-control" name="q" type="text" placeholder="Search Albums"/><input type="image" src="{% static 'music/search.png' %}" alt="Submit" width="48" height="48"/></center>
-                              </form>
-                            </div>
-                          </p>
                       </div>
                 
                       
-                   </div>
-
             </main>
 
 
@@ -101,16 +103,14 @@
      <!-- Active -->
     <script src="{% static 'music/js/default-assets/active.js' %}"></script>
     <link rel="stylesheet" type ="text/css" href = "{% static 'music/followme.css' %}">
-
-<div class="menu2">
-  <div class="label2">Follow Me</div>
-  <div class="spacer2"></div>
-  <div class="item"><span2>Twitter</span2></div>
-  <div class="item"><span2>Instagram</span2></div>
-  <div class="item"><span2>Flickr</span2></div>
-  <div class="item"><span2>Behance</span2></div>
-  <div class="item"><span2>MixCloud</span2></div>
-</div>
-
+   
+                    <div class="search-wrapper">
+                              <div class="input-holder">
+                        <form method="GET" action="{% url 'search' %}">
+                            <input class="search-input" id="searchbox" name="q" type="text" placeholder="Search Albums"/> <button class="search-icon" onclick="searchToggle(this, event);" alt="Submit"><span></span></button>
+                              </form>
+                    </div>
+                        <span class="close" onclick="searchToggle(this, event);"></span>
+    </div>
 </body>
 </html>
