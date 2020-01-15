@@ -38,6 +38,7 @@
                     <table class="table" width = 100%  style="background-color:#1a1a1a" border = "1px solid #fff">
                         <thead style="background-color:#fff">
                         <tr>
+                            <th> # </th>
                             <th>Title</th>
                             <th>Audio File</th>
                             <th>Favorite</th>
@@ -46,7 +47,8 @@
                         </thead>
                         <tbody>
              {% for song in album.songs.all %}
-                            <tr>
+                            <tr>    
+                                <td>1</td> 
                                 <td><font color="#f2f2f2"> <center>{{ song.song_title }}<c/enter> </font></td>
                                 <td><center>
                                 <audio

@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from .models import Album, Songs
 from django.urls import reverse
-
+import os
 AUDIO_FILE_TYPES = ['wav', 'mp3', 'ogg']
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 

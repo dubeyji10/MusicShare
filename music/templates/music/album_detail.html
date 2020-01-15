@@ -1,43 +1,33 @@
-{% extends "music/base2.html" %}
+{% extends "music/base.html" %}
 {% block content %}
-
+<head>
 <title> alternate page  </title>
-
+</head>
 <body>
 
-    <div class="">
-    <div class="row">
-        <!-- Left Album Info -->
-        <div class="col-sm-4 col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-body">
-        <div class = "card"><img src="{{ album.author.profile.image.url }}" class="img-responsive"> </div>
-                   <h2>  <br>{{ object.title }} </h2>
-                    <h2> Genre : {{ object.genre }} </h6>
- <p>uploaded by <a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
-      <br> Performed by - {{object.artists}} <br><br>
+<div><img width="300" height="300" src="{{ album.image.url }}" class=""> </div>
+<h2>  <br>{{ object.title }} </h2>
+<h2> Genre : {{ object.genre }} </h6>
+<p>uploaded by <a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
+<br> Performed by - {{object.artists}} <br><br>
                  <div>
                     {% if object.author == user %}
-                    <a class = "btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'album-update' object.id %}"> Update</a>
-                    <a class = "btn btn-danger btn-sm mt-1 mb-1" href="{% url 'album-delete' object.id %}"> Delete</a>
-                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}">Add Songs</a>  
+                    <a class = "btn btn-secondary" href="{% url 'album-update' object.id %}"> <font color="#fff">Update</font></a>
+                    <a class = "btn btn-danger" href="{% url 'album-delete' object.id %}"> Delete</a>
+                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}"><font color="#fff">Add Songs</font></a>  
                     {% endif %} 
                 </div>
                 </div>
-            </div>
-<div class="col-sm-8 col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-body">
-
+                            {% ifequal album.songs 0 %}
+            Sorry this album has no tracks available 
+                            {% endifequal %}
+            <div class="">
+                <div class="table-wrapper">
                     <h3>All Songs</h3>
-
-                    {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
-                    {% endif %}
-
-                    <table class="table" width = 100%  style="background-color:#1a1a1a" border = "1px solid #fff">
+                    <table class="fl-table">
                         <thead style="background-color:#fff">
                         <tr>
+                            
                             <th>Title</th>
                             <th>Audio File</th>
                             <th>Favorite</th>
@@ -56,7 +46,7 @@
                                             <code>audio</code> element.
                                     </audio>
 
-                                    </a>
+                            
                                </center> </td>
                                 <td>
                                    <font color="#fff"> <center> Favorite OPTION -- add url -==-</center></font>
@@ -64,7 +54,7 @@
                                 {% if object.author == user %}
                                 <td><center>
             {% if object.author == user %}
-          <a class="btn btn-default" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center>Yes</center> </font><span class="glyphicon glyphicon-remove"></span></a>
+          <a class="btn" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center>Yes</center> </font><span class="glyphicon glyphicon-remove"></span></a>
             {% endif %}          </center>                    
                               </td> 
                               {% endif %}
@@ -73,6 +63,7 @@
                         </tbody>
                     </table>
 
+            
                 </div>
             </div>
 
@@ -80,7 +71,7 @@
 
     </div>
 
-</div>
+
 
 
 

@@ -1,12 +1,13 @@
 {% extends "music/base.html" %}
 {% block content %}
+  <font color = "#ff1">_____________________________________________</font>
     {% for album in albums %}
 
     <figure class="snip1585">
         
           <img src="{{ album.image_url }}"> 
        <figcaption>
-    <h3><span> Far Caspian</span></h3>
+    <h4><span> {{ album.artists }}</span></h4>
   </figcaption>
         <a href="{% url 'album-detail' pk=album.pk %}"></a>
         
@@ -25,7 +26,9 @@
                   <a href="{% url 'album-detail' pk=album.pk %}">   Total Tracks : {{ album.songs.count }} </a>
               </div>
             </div>
+    <font color = "#ff1">_____________________________________________</font>
     </article>
+
     {% endfor %}
 
   {% if is_paginated %}

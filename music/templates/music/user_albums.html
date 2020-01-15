@@ -1,10 +1,11 @@
 {% extends "music/base.html" %}
 {% block content %}
-<h1 class="mb-1">   Albums by {{ view.kwargs.username }}<h1>
-<h2 class="small"> Total Albums : {{ page_obj.paginator.count }}</h3>
+  <font color = "#ff1">_____________________________________________</font>
+<h3 class=""> Total Albums : {{ page_obj.paginator.count }}</h3>
     {% for album in albums %}
     <article class="media content-section">
-     <img class = "rounded-circle article-img" src = "{{ album.author.profile.image.url }}">
+
+         <br>
             <div class="media-body">
               <div class="article-metadata">
                 <a class="mr-2" href="{% url 'user-albums' album.author.username %}">{{ album.author }}</a>
@@ -13,16 +14,24 @@
               <h2><a class="article-title" href="{% url 'album-detail' album.id %}">{{ album.title }}</a></h2>
               <div class = "polaroid">  
                 {% if album.image_url %}
-                  <img width="240" height="410" class="img-thumbnail" src="{{ album.image_url }}"/>
+                         <div>
+                     <figure class="snip1585">
+                           <img src="{{ album.image_url }}">    
+                       <figcaption>
+                                       <h3><span> Total Tracks : {{ album.songs.count }} </span></h3>
+                        </figcaption>
+                  </div>
+
+                  
                 {% endif %}
               </div> 
-              <div class = "post_body">
+              <div class = "">
                    
                   <p><h4> Genre :{{ album.genre }} </h4></p> 
-                  <a href="{% url 'album-detail' pk=album.pk %}">   read more</a>
+                  <a href="{% url 'album-detail' pk=album.pk %}">   Listen to {{ album.title }}</a>
               </div>
-              <a href="{% url 'album-detail' pk=album.pk %}">  Songs: {{ album.songs.count }}</a>
 
+            <br>  <font color = "#ff1">_____________________________________________</font>
             </div>
     </article>
     {% endfor %}

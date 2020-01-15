@@ -74,3 +74,8 @@ class Songs(models.Model):
     
     def save(self):
         super().save()
+
+    def delete(self,*args,**kwargs):
+        if os.path.isfile(self.audio_file.path):
+            os.remove(self.audio_file.path)
+        super(Songs, self).delete(*args,**kwargs)

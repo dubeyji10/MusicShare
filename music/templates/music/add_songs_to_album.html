@@ -5,7 +5,7 @@
 </form>
 
 {% block content %}
-    <h1><font color ="#001000">New Songs</h1>
+    <h1><font color ="#ff1">Add Song</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy}}

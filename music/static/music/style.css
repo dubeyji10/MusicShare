@@ -3,6 +3,7 @@ html,body{
   margin:0;
   height:120%;
   font-family: 'Josefin Sans', sans-serif;
+  color: #fff;
 }
 .header{
   position:relative;
