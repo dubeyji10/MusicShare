@@ -1,66 +1,82 @@
-
 {% extends "music/base.html" %}
 {% block content %}
-<table>
-<tr>
-<td>
-    
-      <img class = "article-img" src = "{{ album.author.profile.image.url }}">
-            <div class="media-body">
-              <div class="article-metadata">
-                 
+<head>
+<title> alternate page  </title>
+</head>
+<body>
 
-            </div>
-        
-              <h2 class="article-title" href="#">{{ object.title }}</h2>
-              <img class = "img-fluid" src = "{{ album.image_url|default_if_none:'' }}">
-              <br>__________________________________________________________________
-              <p class="content"><br>{{ object.genre|linebreaks }}</p>
-
-</td>
-</tr>
-</table>
-<table style="width:100%" border = "2px red solid">
-  <tr>
-    <th><a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></th>
-    <th><small class="text-muted">{{ object.date_posted |date:"F d, Y"}}</small></th>
-    <th>            {% if object.author == user %}
-               <div>
-                   <a class = "btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'album-update' object.id %}"> Update</a>
-                   <a class = "btn btn-danger btn-sm mt-1 mb-1" href="{% url 'album-delete' object.id %}"> Delete</a>
-                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}">Add Songs</a>  
+<div><img width="350" height="310" style="border: 2px solid #ff1; border-radius:5px;" src="{{ album.image.url }}" class=""> </div>
+<h2>  <br>{{ object.title }} </h2>
+<h2><font color = "#ff1"> Genre : {{ object.genre }}  </h6>
+<p> <font color = "4cff3d">uploaded by </font><a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
+<br> Performed by - {{object.artists}} </font><br><br>
+                 <div>
+                    {% if object.author == user %}
+                    <a class = "btn btn-secondary" href="{% url 'album-update' object.id %}"> <font color="#fff">Update</font></a>
+                    <a class = "btn btn-danger" href="{% url 'album-delete' object.id %}"> Delete</a>
+                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}"><font color="#fff">Add Songs</font></a>  
+                    {% endif %} 
                 </div>
-            {% endif %} 
-    </th>
-  </tr>
+                </div>
+ {% if album.song %}
+            <div class="">
+                <div class="table-wrapper">
+                    <h3>All Songs</h3>
+                    <table class="fl-table">
+                        <thead style="background-color:#fff">
+                        <tr>
+                            
+                            <th>Title</th>
+                            <th>Audio File</th>
+                            <th>Favorite</th>
+                             {% if object.author == user %}<th>Remove ?</th> {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+             {% for song in album.songs.all %}
+                            <tr>
+                                <td><font color="#f2f2f2"> <center>{{ song.song_title }}<c/enter> </font></td>
+                                <td><center>
+                                <audio
+                                    controls
+                                        src="{{ song.audio_file.url }}">
+                                            Your browser does not support the
+                                            <code>audio</code> element.
+                                    </audio>
 
-  
-    {% for song in album.songs.all %}
+                            
+                               </center> </td>
+                                <td>
+                                   <font color="#fff"> <center> Favorite OPTION -- add url -==-</center></font>
+                                </td>
+                            {% if object.author == user %}
+                                <td><center>
+                                      {% if object.author == user %}
+                                            <a class="btn" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center>Yes</center> </font><span class="glyphicon glyphicon-remove"></span></a>
+                                         {% endif %}          </center>                    
+                              </td> 
+                              {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
 
-    <tr><td> <font color = "#fff"> Title : {{ song.song_title }}</font>
-      {% if object.author == user %}
-    <a class="btn" href="{% url 'song_remove'  pk=album.pk  %}"> Remove </a>
-            {% endif %}
-            <font color = "#fff">On {{ song.created_date }}</font></td></tr>
-    <tr>
-    <td>  
-                <a target="_blank" href="{{ song.audio_file.url }}">
-                                <button type="button" class="btn btn-success btn-xs">
-                        <span class="glyphicon glyphicon-play"></span>&nbsp; Play
-                                                </button>
-                                            </a>
-    </td>
- 
-        {% empty %}
-                    <td>No songs added here yet :(</td>
-                    {{ song.author }}
-    </tr>
-    {% endfor %}
-  
+            
+                </div>
+            </div>
 
-</table>
+        </div>
+    {% else %}   
+            <div class = "">
+      <h2><font color = "red"> Sorry currently there are no songs available in this album </font></h2>
+            </div>
+    {% endif %}
+    </div>
+
+
+
+
+
+</body>
+
 {% endblock content %}
-
-
-
-

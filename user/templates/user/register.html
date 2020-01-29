@@ -1,6 +1,7 @@
 {% extends "music/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<font color="#ff1">
     <div class = "content-section">
             <form method="POST">
                     {% csrf_token %}
@@ -19,7 +20,7 @@
                 Already registered ?  <a href="#" class="ml-2">   Sign In   </a>  
              </small>
         </div>
-          
+</font>
     </div>
 {% endblock content %}
 
