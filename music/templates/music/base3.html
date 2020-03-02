@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+       
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+   <script src="{% static 'music/js/images_responsive.js' %}"></script>
+   <script src="{% static 'music/js/searchbar.js' %}"></script>
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/style.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/searchbar.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/table.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/messages.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/lyrics.css' %}">
+
+
+    {% if title %}
+        <title> {{ title }} </title> 
+    {% else %}
+        <title> MUSIC SHARE </title> 
+    {% endif %}    
+</head>
+<body style="background-color:#1a1a1a"> 
+
+<div class="header">
+  <div class="sides">
+    <a href="{% url 'music-home' %}" class = "logo" >- Home -</a>
+    {% if user.is_authenticated %}
+      <a class="logo" href="{% url 'album-create' %}">- New Album- </a>
+      <a class="logo" href="{% url 'profile' %}">- Profile -</a>
+      <a class="logo" href="{% url 'logout' %}">- Logout -</a>
+    {% else %}
+      <a class="logo" href="{% url 'login' %}">- Login -</a>
+      <a class="logo" href="{% url 'register' %}">- Register -</a>
+    {% endif %}
+    <a href="{% url 'music-about' %}" class = "logo" >- About -</a>
+
+  </div>
+  <div class="sides"> <a href="#" class="menu">-</a></div>
+
+  <div class="info">
+  <h4><a href="#category">Feel The Beats</a></h4>
+    <h1>Music Share</h1>
+    
+    </div>
+    <label>
+                  <input type='checkbox'>
+                    <span class='menu3'> <span class='hamburger'></span> </span>
+                    <ul style="list-style-type:none;">
+                        <li class=""><a class="" href="{% url 'latest-albums' %}"><font color = "#000">Latest Albums</font></a></li>
+                        <li class=""><a class="" href="{% url 'music-announcemnet' %}"><font color = "#000">Announcements</font></a></li>
+                        <li class=""><a class="" href="{% url 'archives' %}"><font color = "#000">Archives</font></a></li>
+                        <li class=""><a class="" href="{% url 'allusers' %}"><font color = "#000">Accounts</font></a></li>
+                    </ul>
+    </label>
+<div class="menu2">
+  <div class="label2">Follow Me</div>
+  <div class="spacer2"></div>
+  <div class="item"><span2>Twitter</span2></div>
+  <div class="item"><span2>Instagram</span2></div>
+  <div class="item"><span2>Flickr</span2></div>
+  <div class="item"><span2>Behance</span2></div>
+  <div class="item"><span2>MixCloud</span2></div>
+</div>
+</div>
+
+ <br>
+ <br>
+
+            <main role="main" class="container">
+                    <div class="row">
+                      <div class="col-md-8">
+                          {% if messages %}
+                            {% for message in messages %}
+                              <div class = "alert alert-{{ message.tags }}"> 
+                                  {{ message }}
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                          {% block content %}{% endblock %}
+                    </div>
+
+                      </div>
+                
+                      
+            </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <script src="{% static 'music/js/jquery.min.js' %}"></script>
+    <script src="{% static 'music/lr.js' %}"></script>
+
+    <!-- Popper -->
+    <!-- Bootstrap -->
+    <script src="{% static 'music/js/bootstrap.min.js' %}"></script>
+    <!-- All Plugins -->
+     <!-- Active -->
+    <script src="{% static 'music/js/default-assets/active.js' %}"></script>
+    <link rel="stylesheet" type ="text/css" href = "{% static 'music/followme.css' %}">
+   
+                    <div class="search-wrapper">
+                              <div class="input-holder">
+                        <form method="GET" action="{% url 'search' %}">
+                            <input class="search-input" id="searchbox" name="q" type="text" placeholder="Search Albums"/> <button class="search-icon" onclick="searchToggle(this, event);" alt="Submit"><span></span></button>
+                              </form>
+                    </div>
+                        <span class="close" onclick="searchToggle(this, event);"></span>
+    </div>
+</body>
+</html>

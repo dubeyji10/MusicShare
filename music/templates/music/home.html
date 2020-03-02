@@ -17,7 +17,7 @@
                 <a class="mr-2" href="{% url 'user-albums' album.author.username %}">{{ album.author }}</a>
                 <small class="text-muted">{{ album.date_posted |date:"F d, Y"}}</small>
               </div>
-              <h2><a class="article-title" href="{% url 'album-detail' album.id %}">{{ album.title }}</a></h2>
+              <h2> <a href="{% url 'album-detail' album.id %}">  <font color = "#cc1">{{ album.title }} </font></a></h2>
               <div class = "polaroid">  
               </div class='article'> 
               <div>

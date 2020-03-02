@@ -121,8 +121,8 @@ genre{
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,700;);
 .snip1585 {
-  background-color: rgb(226, 104, 104);
-  color: rgb(36, 243, 215);
+  background-color: hsl(0, 68%, 65%);
+  color: rgb(22, 235, 121);
   display: inline-block;
   font-family: 'Roboto', sans-serif;
   font-size: 24px;

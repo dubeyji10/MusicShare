@@ -1,0 +1,8 @@
+.content-section { /* posts */
+    background:/*#ececec*/transparent;
+    padding: 10px 20px;
+    border: 2.3px dotted #040404;/* 1px solid #080404*/
+    border-radius: 19.44px; /* 3px */
+    margin-bottom: 20px;
+    color: #030303; /*remove this line */
+  }

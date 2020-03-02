@@ -247,7 +247,6 @@ def favorite(request, song_id):
     else:
         return JsonResponse({'success': True})
 
-
 def favorite_album(request, album_id):
 
     album = get_object_or_404(Album, pk=album_id)
@@ -262,3 +261,13 @@ def favorite_album(request, album_id):
     else:
         return JsonResponse({'success': True})
 
+        
+class SongDetailView(DetailView):
+    model = Songs
+    template_name = 'music/song_detail.html'
+    context_object_name = 'songs'
+    # #ordering = ['-date_posted']
+
+        
+def song_detail2(request,pk):
+    return redirect('song-detail2', pk=song.album.pk)

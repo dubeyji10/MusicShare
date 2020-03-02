@@ -47,7 +47,7 @@ body {
     color: blue;
     }
   a:hover{
-    color:rgb(248, 241, 241);
+    color:rgb(24, 224, 91);  /* rgb(248, 241, 241) */
     /* text-transform: lowercase;*/
     }
     .container {
@@ -67,7 +67,7 @@ body {
         border-bottom: 2px dotted #ce2c2c;
         -webkit-transform: rotate(-3deg);
         -moz-transform: rotate(-3deg);
-        color: #fff;
+        color: #ff1; /* fff*/
     }
 
     .container:before {
@@ -100,13 +100,13 @@ body {
             margin-right: -18px;
             position: relative;
             z-index: 1;
-            color: #fff;
+            color: #ff1; /* fff*/
         }
 
         blockquote strong:first-child {
             margin-left: 8px;
             letter-spacing: 0;
-            color: #fff;
+            color: #ff1; /* fff*/
         }
 
        /*blockquote strong:last-child {

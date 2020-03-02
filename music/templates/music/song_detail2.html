@@ -1,0 +1,15 @@
+{% extends "music/base.html" %}
+{% block content %}
+<title>    lyrics     </title>
+        <h1 class="card-title">
+                <font color="#ff1">LYRICS</font>
+        </h1>
+{{ song.album.pk }}
+       info :  {{ album.song.pk }}
+        {{ song.title }}
+
+__________________
+        {{ song.lyrics }}
+
+{% endblock %}
+

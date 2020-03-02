@@ -17,7 +17,7 @@
 
 
 from django.urls import path
-from .views import AlbumListView,AlbumDetailView,AlbumCreateView,AlbumUpdateView,AlbumDeleteView,UserAlbumListView,SearchView,AlbumDetailView2
+from .views import AlbumListView,AlbumDetailView,AlbumCreateView,AlbumUpdateView,AlbumDeleteView,UserAlbumListView,SearchView,AlbumDetailView2,SongDetailView
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -57,6 +57,9 @@ urlpatterns = [
     #url(r'^search/', views.search, name="search")
     #url(r'^searchform/$', views.searchform),
     #url(r'^search/$', views.search),
+    path('song/<int:pk>/lyrics/', views.song_detail2, name='song_detail2'),
+    path('song/<int:pk>/',SongDetailView.as_view(),name = 'song-detail'), #uncomment this line
+
 
 ]
 

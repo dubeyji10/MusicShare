@@ -1,0 +1,237 @@
+body {
+    background: #f0eaea;
+    color: #111010;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3 {
+    /* color: #030202; */
+    color:#1aee8b;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h4, h5, h6{
+    color: /* #13e4c1;*/ #020302;
+    font-display: Helvetica;
+  }
+  ul {
+    margin: 0;
+  }
+  
+  .bg-steel {
+    background-color:#0997f6 /*#00c3ff*/;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #020302;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: /*#ffffff*/#f119bb;
+  }
+  .site-header:hover{/*remove this block and add .site-header to above*/
+    color: #0ff649;
+  }
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section { /* posts */
+    background:/*#ececec*/transparent;
+    padding: 10px 20px;
+    border: 2.3px dotted #fff ;/*  #040404;/* 1px solid #080404*/
+    border-radius: 19.44px; /* 3px */
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: /*#444444*/#1aee8b;/*title of post .. Blog 1 , .. */
+  }
+  
+  a.article-title:hover {/* when cursor hovers over article title*/
+    color: /*#428bca*/#aa199e;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+    color:/*#020302;*/ #fff;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: rgb(24, 238, 59);/* #333 */
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+  img.polaroid {
+    width: 80%;
+    background-color: #000000;
+    box-shadow: 0 14px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .comment {
+    margin: 20px 0px 20px 20px;
+}
+
+  .profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border-color: rgb(34, 233, 133);
+
+}
+genre{
+  color:#fff;
+}
+
+/* --------- */
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,700;);
+.snip1585 {
+  background-color: rgb(226, 104, 104);
+  color: rgb(36, 243, 215);
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  margin: 10px;
+  max-width: 315px;
+  min-width: 230px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.snip1585 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease;
+  transition: all 0.45s ease;
+}
+
+.snip1585:before,
+.snip1585:after {
+  background-color: rgba(190, 141, 141, 0.5);
+  border-top: 50px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 50px solid rgba(243, 235, 235, 0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 1;
+  opacity: 0;
+}
+
+.snip1585:before {
+  -webkit-transform: scaleY(2);
+  transform: scaleY(2);
+}
+
+.snip1585:after {
+  -webkit-transform: scaleY(2);
+  transform: scaleY(2);
+}
+
+.snip1585 img {
+  vertical-align: top;
+  max-width: 100%;
+  backface-visibility: hidden;
+}
+
+.snip1585 figcaption {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1em;
+  opacity: 0;
+  z-index: 2;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.snip1585 h3 {
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.snip1585 h3 span {
+  display: block;
+  font-weight: 700;
+}
+
+.snip1585 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.snip1585:hover > img,
+.snip1585.hover > img {
+  opacity: 0.7;
+}
+
+.snip1585:hover:before,
+.snip1585.hover:before,
+.snip1585:hover:after,
+.snip1585.hover:after {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.snip1585:hover figcaption,
+.snip1585.hover figcaption {
+  opacity: 1;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}

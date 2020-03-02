@@ -2,10 +2,16 @@
 {% block content %}
 <head>
 <title> alternate page  </title>
+ 
+
+
 </head>
 <body>
 
-<div><img width="350" height="310" style="border: 2px solid #ff1; border-radius:5px;" src="{{ album.image.url }}" class=""> </div>
+
+
+
+<div><img width="350" height="330" style="border: 2px solid #ff1; border-radius:15px;" src="{{ album.image.url }}" class="" title="{{object.artists}}"> </div>
 <h2>  <br>{{ object.title }} </h2>
 <h2><font color = "#ff1"> Genre : {{ object.genre }}  </h6>
 <p> <font color = "4cff3d">uploaded by </font><a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
@@ -18,9 +24,14 @@
                     {% endif %} 
                 </div>
                 </div>
-                            {% ifequal album.songs 0 %}
-            Sorry this album has no tracks available 
-                            {% endifequal %}
+
+    {% ifequal album.songs.count 0 %}   
+       
+    <div class="container1">
+    <div class="message-blue">
+        <p class="message-content">  Sorry currently there are no songs <br>available in this album </p>
+    </div>
+    {% else %}
             <div class="">
                 <div class="table-wrapper">
                     <h3>All Songs</h3>
@@ -51,11 +62,11 @@
                                 <td>
                                    <font color="#fff"> <center> Favorite OPTION -- add url -==-</center></font>
                                 </td>
-                                {% if object.author == user %}
+                            {% if object.author == user %}
                                 <td><center>
-            {% if object.author == user %}
-          <a class="btn" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center>Yes</center> </font><span class="glyphicon glyphicon-remove"></span></a>
-            {% endif %}          </center>                    
+                                      {% if object.author == user %}
+                                            <a class="btn" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center>Yes</center> </font><span class="glyphicon glyphicon-remove"></span></a>
+                                         {% endif %}          </center>                    
                               </td> 
                               {% endif %}
                             </tr>
@@ -69,9 +80,12 @@
 
         </div>
 
+</div>
+
     </div>
 
 
+    {% endifequal %}
 
 
 

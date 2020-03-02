@@ -427,3 +427,15 @@ font-family: 'Satisfy', cursive;
   -webkit-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
+
+audio { 
+  background-color: rgb(17, 255, 176);
+  width: 500px; 
+  opacity: 0.89;
+  box-shadow: 5px 5px 5px 5px rgba(54, 236, 151, 0.4);
+  border-radius: 90px;
+  transform: scale(1.05);
+  z-index: 1;
+  flex-direction: column;
+
+}
