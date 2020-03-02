@@ -1,1 +1,2 @@
-starting with this semester's project
+A web application for music lovers to share their favourite music.
+
