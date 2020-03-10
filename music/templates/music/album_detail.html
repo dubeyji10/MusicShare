@@ -12,7 +12,7 @@
 
 
 <div><img width="350" height="330" style="border: 2px solid #ff1; border-radius:15px;" src="{{ album.image.url }}" class="" title="{{object.artists}}"> </div>
-<h2>  <br>{{ object.title }} </h2>
+<h2>  <font face="Indie Flower" ><br>{{ object.title }} </font></h2>
 <h2><font color = "#ff1"> Genre : {{ object.genre }}  </h6>
 <p> <font color = "4cff3d">uploaded by </font><a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
 <br> Performed by - {{object.artists}} </font><br><br>
@@ -20,7 +20,7 @@
                     {% if object.author == user %}
                     <a class = "btn btn-secondary" href="{% url 'album-update' object.id %}"> <font color="#fff">Update</font></a>
                     <a class = "btn btn-danger" href="{% url 'album-delete' object.id %}"> Delete</a>
-                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}"><font color="#fff">Add Songs</font></a>  
+                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}"><font size=20 color="#fff">Add Songs</font></a>  
                     {% endif %} 
                 </div>
                 </div>
@@ -29,7 +29,7 @@
        
     <div class="container1">
     <div class="message-blue">
-        <p class="message-content">  Sorry currently there are no songs <br>available in this album </p>
+        <p class="message-content"> <font face="Indie Flower" >Sorry currently there are no songs available in this album </font></p> 
     </div>
     {% else %}
             <div class="">

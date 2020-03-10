@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+@import url("https://fonts.googleapis.com/css?family=Indie Flower");
+
 html,body{
   margin:0;
   height:120%;
-  font-family: 'Josefin Sans', sans-serif;
-  color: #fff;
+  color: #fff; 
+  font-family: 'Josefin Sans', sans-serif; /* --remove if error occurs */
+  font-size: 20px;/* --remove if error occurs */
 }
 .header{
   position:relative;
@@ -17,7 +20,8 @@ html,body{
   min-height:400px;
   max-height:550px;
   min-width:300px;
-  color:#eee;
+  color:rgb(24, 243, 134);
+  /* font-family: 'Indie Flower', serif; */
 }
 .header:after{
   content:"";

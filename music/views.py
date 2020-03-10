@@ -270,4 +270,6 @@ class SongDetailView(DetailView):
 
         
 def song_detail2(request,pk):
+#    return render(request, 'music/AllUsers.html', {'all_users': all_users,})
+
     return redirect('song-detail2', pk=song.album.pk)
