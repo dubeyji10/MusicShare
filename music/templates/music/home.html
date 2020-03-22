@@ -5,7 +5,7 @@
 
     <figure class="snip1585">
         
-          <img src="{{ album.image_url }}"> 
+          <img src="{{ album.image_url }}" class="album_image"> 
        <figcaption>
     <h4><span> {{ album.artists }}</span></h4>
   </figcaption>
@@ -21,8 +21,7 @@
               <div class = "polaroid">  
               </div class='article'> 
               <div>
-                  <font color = "#fff"> Genre : {{ album.genre }}</font> 
-                  <br>
+                  <font color = "#fff"> <div id="genre"> Genre : {{ album.genre }} </div> </font> 
                   <a href="{% url 'album-detail' pk=album.pk %}">   Total Tracks : {{ album.songs.count }} </a>
               </div>
             </div>

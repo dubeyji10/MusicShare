@@ -61,7 +61,7 @@
                     </ul>
     </label>
 <div class="menu2">
-  <div class="label2">Follow Me</div>
+  <div class="label2"><font color="#8DEF54">Follow Me</font></div>
   <div class="spacer2"></div>
   <div class="item"><span2>Twitter</span2></div>
   <div class="item"><span2>Instagram</span2></div>
@@ -108,7 +108,8 @@
      <!-- Active -->
     <script src="{% static 'music/js/default-assets/active.js' %}"></script>
     <link rel="stylesheet" type ="text/css" href = "{% static 'music/followme.css' %}">
-   
+    <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
+
                     <div class="search-wrapper">
                               <div class="input-holder">
                         <form method="GET" action="{% url 'search' %}">
@@ -120,3 +121,13 @@
 </body>
 </html>
 
+
+
+<script>
+$scope.id=0;
+document.getElementById("stopplay").onclick=function(){
+var audio = document.getElementById("number-"+scope.id);
+    if (audio.paused) audio.play();
+    else audio.pause();
+};
+</script>

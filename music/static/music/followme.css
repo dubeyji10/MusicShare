@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 .menu2 {
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(228, 72, 72, 0.8);
   display: inline-block;
   cursor: pointer;
   pointer-events: none;
@@ -32,7 +32,7 @@
   border-bottom: 1px solid #1a1414;
   height: 1px;
   width: 0%;
-  transition: width 0.25s ease;
+  transition: width 0.5s ease;
   transition-delay: 0.7s;
 }
 .item {
@@ -48,7 +48,7 @@ span2 {
   transition: color 0.5s ease;
 }
 .item:hover span2 {
-  color: #ff0000;
+  color: #00ffdd;
 }
 .menu2:hover .spacer:before {
   width: 100%;

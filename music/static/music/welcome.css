@@ -31,13 +31,13 @@ body {
 }
 */
   a:link {
-    color: rgb(246, 246, 246);
+    color: rgb(220, 238, 56);
 
   }
   
   /* visited link */
   a:visited {
-    color: rgb(230, 253, 230);
+    color: rgb(246, 243, 49);
   }
   
   /* mouse over link */
@@ -58,13 +58,13 @@ body {
 
     blockquote {
         width: 565px;
-        font: 2.65em CallunaRegular;
+        font: 3.65em CallunaRegular;
         letter-spacing: .075em;
         float: left;
         padding: 45px 0 30px 25px;
         margin: 0;
-        border-top: 2px dotted #ee2f2f;
-        border-bottom: 2px dotted #ce2c2c;
+        border-top: 2px dotted #1ef565;
+        border-bottom: 3px dotted #26db44;
         -webkit-transform: rotate(-3deg);
         -moz-transform: rotate(-3deg);
         color: #ff1; /* fff*/
@@ -75,7 +75,7 @@ body {
         font-size: 13em;
         position: absolute;
         left: -100px;
-        color: #666;
+        color: rgb(238, 235, 48);  /* #666; */
     }
 
     .container:after {
@@ -84,7 +84,7 @@ body {
         position: absolute;
         right: -100px;
         top: 150px;
-        color: #666;
+        color: rgb(228, 241, 45);
     }
 
         blockquote:first-line {
