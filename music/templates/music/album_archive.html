@@ -6,8 +6,11 @@
 <ul>
 
         {% for article in latest %}
+            <br>
+
             <li><font color = "#ff2">
                 <a href="{% url 'album-detail' article.id %}"> {{ article.title }} </a>by <font color = "#fff">  <a class="mr-2" href="{% url 'user-albums' article.author.username %}">{{ article.author }}</a></font> on {{ article.date_posted }}
+               <br>
                 </font>
             </li>
         {% endfor %}

@@ -42,6 +42,7 @@ body {
     border: 2.3px dotted #fff ;/*  #040404;/* 1px solid #080404*/
     border-radius: 19.44px; /* 3px */
     margin-bottom: 20px;
+    padding-left: -20%; /* added on 17/04 remove if messes up */
   }
   
   .article-title {

@@ -32,6 +32,53 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 def welcome(request):
     return render(request,'music/welcome.html',{'title':'Welcome'})
 
+
+# def view_for_json(request):
+#     data = {
+#         'albums' : Album.objects.all()
+#         }
+#     return JsonResponse(data)
+
+from rest_framework import serializers
+from .serializers import *
+from rest_framework import generics
+
+#--------------------------------------------
+
+# def view_for_json(request):
+#     return HttpResponse("albums", Album.objects.all(), content_type='application/json')
+
+class AlbumListView2(generics.ListAPIView):# try - ListCreateAPIView
+    template = 'music/jsonview.html'
+    context_object_name = 'albums'
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+
+class SongsListView2(generics.ListAPIView):# try - ListCreateAPIView
+    content_type = "json"
+    template = 'music/jsonviewsong.html'
+    context_object_name = 'songs'
+    queryset = Songs.objects.all()
+    serializer_class = SongsSerializer
+
+
+    # if serializer.is_valid():  # add student
+    #     student = get_object_or_404(Student, id=student_id)
+    #     class_.students.add(student)
+    #     return redirect('class-detail', pk=pk)
+
+    # else:
+    #     errors = serializer.errors
+
+    # content_type = "json"
+    # template = 'music/jsonviewsong.html'
+    # context_object_name = 'songs'
+    # queryset = Songs.objects.all()
+    # serializer_class = SongsSerializer
+
+
+#--------------------------------------------
+
 def home(request):
     context = {
         'albums':Album.objects.all()
@@ -50,7 +97,7 @@ class AlbumListView(ListView):
     #<app>/<model>_<viewtype>.html
     context_object_name = 'albums'
     ordering = ['-date_posted']
-    paginate_by = 4
+    paginate_by = 3 #4
 
 
 class AlbumDetailView(DetailView):
@@ -84,7 +131,16 @@ class UserAlbumListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User,username=self.kwargs.get('username'))
         return Album.objects.filter(author=user).order_by('-date_posted')
-        
+
+
+#here ----
+
+# class AlbumListView2(generics.ListCreateAPIView):
+#     queryset = Album.objects.all()
+#     serializer_class = AlbumSerializer
+
+
+#-----    
 class AlbumCreateView(LoginRequiredMixin,CreateView):
     model = Album
     fields = ['title','genre','artists','image']

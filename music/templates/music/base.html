@@ -3,6 +3,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+          <!-- remove this block  -->
+ 
+        <script>
+
+Var player;
+
+window.onload =function()
+
+{
+
+player = document.getElementById(‘player’);
+
+}
+
+function playMusic()
+
+{
+
+player.play();
+
+}
+
+function pauseMusic()
+
+{
+
+Player.pause();
+
+}
+
+function stopMusic()
+
+{
+
+Player.stop();
+
+}
+
+    </script>
+
+
+    <!-- here  -->
+
+
+
        
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,6 +65,7 @@
         <link rel="stylesheet" type ="text/css" href = "{% static 'music/messages.css' %}">
         <link rel="stylesheet" type ="text/css" href = "{% static 'music/lyrics.css' %}">
         <link rel="stylesheet" type ="text/css" href = "{% static 'music/player.css' %}">
+        <link rel="stylesheet" type ="text/css" href = "{% static 'music/footer.css' %}">
 
 
     {% if title %}
@@ -46,7 +93,7 @@
   <div class="sides"> <a href="#" class="menu">-</a></div>
 
   <div class="info">
-  <h4><a href="#category">Feel The Beats</a></h4>
+  <h4><a href="#">Feel The Beats</a></h4>
     <h1>Music Share</h1>
     
     </div>
@@ -100,6 +147,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    <script src="{% static 'music/js/jquery.min.js' %}"></script>
     <script src="{% static 'music/lr.js' %}"></script>
+    <script src="{% static 'music/player2.js' %}"></script>
 
     <!-- Popper -->
     <!-- Bootstrap -->
@@ -119,6 +167,25 @@
                         <span class="close" onclick="searchToggle(this, event);"></span>
     </div>
 </body>
+<section id="footer">
+		<div class="container">
+      <font color="#ff1">
+
+    <div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Quick links</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="{% url 'music-home' %}"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="{% url 'music-about' %}"><i class="fa fa-angle-double-right"></i>About</a></li>
+						<li><a href="{% url 'archives' %}"><i class="fa fa-angle-double-right"></i>Archives</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+						<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+					</ul>
+			</div>
+      </font>
+        </div>
+
+</section>
+
 </html>
 
 

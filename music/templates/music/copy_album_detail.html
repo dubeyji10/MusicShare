@@ -1,0 +1,101 @@
+{% extends "music/base.html" %}
+{% block content %}
+{% load static %}
+
+<head>
+<title> alternate page  </title>
+ 
+
+
+</head>
+<body>
+
+
+
+
+<div><img width="350" height="330" style="border: 2px solid rgb(132, 255, 17); border-radius:15px;" src="{{ album.image.url }}" class="" title="{{object.artists}}"> </div>
+<h2>  <font face="Indie Flower" ><br>{{ object.title }} </font></h2>
+<font><font color = "#ff1"> Genre : {{ object.genre }}  </h6>
+<p> <font color = "4cff3d">uploaded by </font><a class="mr-2" href="{% url 'user-albums' object.author.username %}">{{ object.author }}</a></p>
+<br> Performed by - {{object.artists}} </font><br><br>
+                 <div>
+                    {% if object.author == user %}
+                    <a class = "btn btn-secondary" href="{% url 'album-update' object.id %}"> <font color="#fff">Update</font></a>
+                    <a class = "btn btn-danger" href="{% url 'album-delete' object.id %}"> Delete Album</a>
+                    <a class="btn" href="{% url 'add_songs_to_album' pk=album.pk  %}"> <img title="Add Songs" height="35" width="35" src="{% static 'music/add.png' %}" > </a>  
+                    {% endif %} 
+                </div>
+                </div>
+
+    {% ifequal album.songs.count 0 %}   
+       
+    <div class="container1">
+    <div class="message-blue">
+        <p class="message-content"> <font face="Indie Flower" >Sorry currently there are no songs available in this album </font></p> 
+    </div>
+    {% else %}
+            <div class="">
+                <div class="table-wrapper">
+                    <h3>All Songs</h3>
+                    <table class="fl-table">
+                        <thead style="background-color:#fff">
+                        <tr>
+                            
+                            <th>Title</th>
+                            <th>Audio File</th>
+                            <th>Lyrics</th>
+                             {% if object.author == user %}<th>Remove ?</th> {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+             {% for song in album.songs.all %}
+                            <tr>
+                                <td><font color="#f2f2f2" title="added on {{ song.created_date }}"> <center><a class="" href="#"> <font color="#ff1" size=5.4px face="Indie Flower" >{{ song.song_title }}</font></a></center> </font></td>
+                                <td><center>
+                                <audio class="audio-player"
+                                    controls
+                                        src="{{ song.audio_file.url }}">
+                                            Your browser does not support the
+                                            <code>audio</code> element.
+                                    </audio>
+
+                            
+                               </center> 
+                                                
+
+                               </td>
+                                <td>
+                                   <center><font color="#ff1" size=5.4px face="Indie Flower" ></font>{{ song.lyrics|linebreaks|truncatewords:"20" }}</font>
+                                   <br> <a class="" href="{% url 'song-detail' song.id %}" target="_blank">more </a> </center>
+                                </td>
+                            {% if object.author == user %}
+                                <td><center>
+                                      {% if object.author == user %}
+                                            <a class="btn" href="{% url 'song_delete'  pk=song.pk  %}"><font color="#fff"> <center> <img title="Add Songs" height="35" width="35" src="{% static 'music/delete1.png' %}" > </center> </font><span class="glyphicon glyphicon-remove"></span></a>
+                                         {% endif %}          </center>                    
+                              </td> 
+                              {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+            
+                </div>
+            </div>
+
+        </div>
+
+</div>
+
+    </div>
+
+
+    {% endifequal %}
+
+
+
+</body>
+
+{% endblock content %}
+

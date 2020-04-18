@@ -25,6 +25,7 @@ from django.conf.urls import url
 from django.views.generic.dates import ArchiveIndexView
 from .models import Album
 from django.urls import reverse
+from music.views import AlbumListView2, SongsListView2
 
 urlpatterns = [
 
@@ -33,6 +34,11 @@ urlpatterns = [
                  #calls home function
     path('about/',views.about,name='music-about'),#.../about
              #call about function
+    #
+    # path('jsonview/',AlbumDetailView2.as_view(),name='music-jsonview'),#.../about
+    url(r'^jsonview/$', AlbumListView2.as_view(),name='jsonview'),
+    url(r'^jsonview2/$', SongsListView2.as_view(),name='jsonview2'),
+    #
     path('announcemnet/',views.announcement,name='music-announcemnet'),#another simple page
     path('album/<int:pk>/',AlbumDetailView.as_view(),name = 'album-detail'), #uncomment this line
     #path('album/<int:pk>/',views.detail2,name = 'album-detail2'),

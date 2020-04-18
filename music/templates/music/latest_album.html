@@ -7,9 +7,9 @@
         
         {% for form in forms %}
 
-        <li><font color = "#10cfcf" size = "5.6px">
-                <a href="{% url 'album-detail' form.id %}"> {{ form.title }} </font></a><br>______________________________ by<font color = "#5ce65c" size = "4px"> <a class="mr-2" href="{% url 'user-albums' form.author.username %}">  {{ form.author }}  </a> </font> on {{ form.date_posted }}
+        <li><font color = "lightgreen" size = "5.6px">
+                <a style="color:pink;" href="{% url 'album-detail' form.id %}"> {{ form.title }} </font></a><br>____________________ by<font color = "#5ce65c" size = "4px"> <a class="mr-2" style="color:lightgreen;" href="{% url 'user-albums' form.author.username %}">  {{ form.author }}  </a> </font> on {{ form.date_posted }}
         </font>
         </li>
         {% endfor %}
-{% endblock %}
+{% endblock %} 

@@ -16,6 +16,13 @@ class Album(models.Model):
     author  = models.ForeignKey(User,on_delete=models.CASCADE)
     image = models.ImageField(blank=True,null=True,upload_to='album_cover')
     
+
+    #--
+
+    # def __iter__(self):
+    #     return "field.value_to_string(self) for field in Album._meta.fields"
+    
+    #--
     def __str__(self):
         return self.title
 

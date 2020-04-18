@@ -5,7 +5,7 @@
 
     <figure class="snip1585">
         
-          <img src="{{ album.image_url }}" class="album_image"> 
+          <img src="{{ album.image_url }}" style="border:1px solid #000 ;" class="album_image"> 
        <figcaption>
     <h4><span> {{ album.artists }}</span></h4>
   </figcaption>
@@ -29,7 +29,7 @@
     </article>
 
     {% endfor %}
-
+  <br><br>
   {% if is_paginated %}
 
     {% if page_obj.has_previous %}
@@ -39,9 +39,9 @@
     
     {% for num in page_obj.paginator.page_range %}
       {% if page_obj.number == num %}
-        <a href="?page={{ num }}" class = "btn btn-info mb-4">{{ num }}</a>
+        <a href="?page={{ num }}" style="background:aqua ;color:black;" class = "btn btn-info mb-4">{{ num }}</a>
       {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <a href="?page={{ num }}" class = "btn btn-info mb-4">{{ num }}</a>
+        <a href="?page={{ num }}" style="background:aqua ;color:black;" class = "btn btn-info mb-4">{{ num }}</a>
       {% endif %}
     {% endfor %}
     
